@@ -33,7 +33,7 @@ class LeroyruSpider(scrapy.Spider):
         loader.add_xpath('name', "//h1/text()")
         loader.add_xpath('photos', "//img[contains(@slot,'thumbs')]/@src")
         loader.add_value('link', response.url)
-        loader.add_xpath('price', "span[@slot='price']")
+        loader.add_xpath('price', "//span[@slot='price']/text()")
         loader.add_value('specifications', response.xpath('//dl[@class="def-list"]'))
 
         yield loader.load_item()
